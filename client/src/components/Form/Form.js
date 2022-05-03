@@ -35,7 +35,7 @@ const Form = (currentId, setCurrentId) => {
     return (
         <Paper className={classes.paper}>
       <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-        <Typography variant="h6">{currentId ? 'Create'  : 'Create'} an event</Typography>
+        <Typography variant="h6">Create an event</Typography>
         <TextField name="creator" variant="outlined" label="Creator" fullWidth value={eventData.creator} onChange={(e) => setEventData({ ...eventData, creator: e.target.value })} />
         <TextField name="title" variant="outlined" label="Title" fullWidth value={eventData.title} onChange={(e) => setEventData({ ...eventData, title: e.target.value })} />
         <TextField name="location" variant="outlined" label="Location" fullWidth value={eventData.location} onChange={(e) => setEventData({ ...eventData, location: e.target.value })} />
