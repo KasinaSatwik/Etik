@@ -7,7 +7,6 @@ const router = require("express").Router();
 router.get('/', getEvents);
 router.post('/', createEvent);
 router.get('/:id', getEvent);
-router.patch('/:id', updateEvent);
 router.delete('/:id', deleteEvent);
 router.patch('/:id/likeEvent', likeEvent);
 

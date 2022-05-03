@@ -1,11 +1,9 @@
 const mongoose = require("mongoose");
-
-//import EventMessage from '../models/eventMessage.js';
 const EventMessage = require("../models/eventMessage.js");
 
 const router = require("express").Router();
 
-const getEvents = async (req, res) => { 
+const getEvents = async (_req, res) => { 
     try {
         const eventMessages = await EventMessage.find();
                 
@@ -15,8 +13,8 @@ const getEvents = async (req, res) => {
     }
 }
 
-const getEvent = async (req, res) => { 
-    const { id } = req.params;
+const getEvent = async (_req, res) => { 
+    const { id } = _req.params;
 
     try {
         const event = await EventMessage.findById(id);
@@ -27,8 +25,8 @@ const getEvent = async (req, res) => {
     }
 }
 
-const createEvent = async (req, res) => {
-    const { title, description, selectedFile, creator, tags , location , city } = req.body;
+const createEvent = async (_req, res) => {
+    const { title, description, selectedFile, creator, tags , location , city } = _req.body;
 
     const newEventMessage = new EventMessage({ title, description, selectedFile, creator, tags , location , city })
 
@@ -41,21 +39,21 @@ const createEvent = async (req, res) => {
     }
 }
 
-const updateEvent = async (req, res) => {
-    const { id } = req.params;
-    const { title, description, selectedFile, creator, tags , location , city } = req.body;
+const updateEvent = async (_req, res) => {
+     const { id } = _req.params;
+     const { title, description, selectedFile, creator, tags , location , city } = _req.body;
     
-    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No event with id: ${id}`);
+     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404);
 
-    const updatedEvent = { title, description, selectedFile, creator, tags , location , city, _id: id };
+     const updatedEvent = { title, description, selectedFile, creator, tags , location , city, _id: id };
 
-    await EventMessage.findByIdAndUpdate(id, updatedEvent, { new: true });
+     await EventMessage.findByIdAndUpdate(id, updatedEvent, { new: true });
 
-    res.json(updatedEvent);
-}
+     res.json(updatedEvent);
+ }
 
-const deleteEvent = async (req, res) => {
-    const { id } = req.params;
+const deleteEvent = async (_req, res) => {
+    const { id } = _req.params;
 
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No event with id: ${id}`);
 
@@ -64,8 +62,8 @@ const deleteEvent = async (req, res) => {
     res.json({ message: "Event deleted successfully." });
 }
 
-const likeEvent = async (req, res) => {
-    const { id } = req.params;
+const likeEvent = async (_req, res) => {
+    const { id } = _req.params;
 
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No event with id: ${id}`);
     
