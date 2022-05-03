@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const url = 'http://localhost:8080/events';
-const url1 = 'http://localhost:8080/tickets';
+const url = 'http://localhost:8080/api/events';
+const url1 = 'http://localhost:8080/api/tickets';
 
 export const fetchEvents = () => axios.get(url);
 export const createEvent = (newEvent) => axios.post(url, newEvent);

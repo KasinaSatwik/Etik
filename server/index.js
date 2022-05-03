@@ -23,8 +23,8 @@ app.use("/api/users", userRoutes);
 app.use("/api/authuser", authuserRoutes);
 app.use("/api/organizers", organizerRoutes);
 app.use("/api/authorganizer", authorganizerRoutes);
-app.use("/events",eventRoutes);
-app.use("/tickets",ticketRoutes);
+app.use("/api/events",eventRoutes);
+app.use("/api/tickets",ticketRoutes);
 
 
 const port = process.env.PORT || 8080;

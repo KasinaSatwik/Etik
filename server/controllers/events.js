@@ -55,7 +55,7 @@ const updateEvent = async (_req, res) => {
 const deleteEvent = async (_req, res) => {
     const { id } = _req.params;
 
-    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No event with id: ${id}`);
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404);
 
     await EventMessage.findByIdAndRemove(id);
 
@@ -65,7 +65,7 @@ const deleteEvent = async (_req, res) => {
 const likeEvent = async (_req, res) => {
     const { id } = _req.params;
 
-    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No event with id: ${id}`);
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404);
     
     const event = await EventMessage.findById(id);
 
