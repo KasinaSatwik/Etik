@@ -29,7 +29,7 @@ const Form = (currentId, setCurrentId) => {
           //  } else {
           //   dispatch(updateEvent(currentId, eventData));
           //   clear();
-          // }
+             // }
     };
     
     return (
