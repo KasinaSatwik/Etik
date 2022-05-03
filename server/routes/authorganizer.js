@@ -9,7 +9,7 @@ router.post("/", async (req, res) => {
 		if (error)
 			return res.status(400).send({ message: error.details[0].message });
 
-		const organizer = await Organizer.findOne({ email: req.body.email });
+		const organizer = await Organizer.findOne({ email: req.body.email.toString() });
 		
 		if (!organizer)
 			return res.status(401).send({ message: "Invalid Email or Password" });
